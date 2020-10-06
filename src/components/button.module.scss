@@ -1,0 +1,18 @@
+.button {
+    box-sizing: border-box;
+    height: 40px;
+    padding: 0 15px;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font: {
+        family: 'Roboto', sans-serif;
+        size: 16px;
+        font-weight: 700;
+    }
+    cursor: pointer;
+    
+    &:hover { background-color: #4682B4; }
+}
+
+
