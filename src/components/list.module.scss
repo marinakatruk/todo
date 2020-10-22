@@ -32,16 +32,22 @@
 }
 
 .completeButton {
-    background-color: #ffffff;
-    color: #00BFFF;
     border: none;
+    background-color: #ffffff;
     cursor: pointer;
+    font-size: 14px;
     margin-right: 10px;
-
-    &:hover {
-        color: #ffffff;
-        background-color: #00BFFF;
-        border-radius: 3px;
-    }
+    color: #00BFFF;
 }
+
+.deleteButton:active,
+.deleteButton:focus {
+    outline: none;
+}
+
+.completeButton:active,
+.completeButton:focus {
+    outline: none;
+}
+
 

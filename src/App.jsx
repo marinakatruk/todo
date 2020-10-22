@@ -9,6 +9,11 @@ import Counter from './components/counter'
 function App() {
 
   const [items, setItems] = useState([]);
+  const [value, setValue] = useState("");
+
+  const [total, setTotal] = useState(0);
+  const [completed, setCompleted] = useState(0);
+
 
   const addItem = (text) => {
     const newItems = [...items, { text, isCompleted: false }];
@@ -23,17 +28,12 @@ function App() {
     setCompleted(0);
   };
 
-  const [value, setValue] = useState("");
-
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!value) return;
     addItem(value);
     setValue("");
   }
-
-  const [total, setTotal] = useState(0);
-  const [completed, setCompleted] = useState(0);
 
   const removeItem = (index) => {
     const newItems = [...items];
@@ -46,11 +46,19 @@ function App() {
   }
 
   const completeItem = (index) => {
+    
     const newItems = [...items];
-    newItems[index].isCompleted = true;
-    setItems(newItems);
-    setCompleted(completed + 1);
+    if (newItems[index].isCompleted) {
+      newItems[index].isCompleted = false;
+      setItems(newItems);
+      setCompleted(completed - 1);
+    } else {
+      newItems[index].isCompleted = true;
+      setItems(newItems);
+      setCompleted(completed + 1);
+    }
   }
+
 
   return (
     <div className={styles.container}>
@@ -69,7 +77,7 @@ function App() {
       <h2>Your ToDo List</h2>
       <List items={items} removeItem={removeItem} completeItem={completeItem}/>
       <Counter total={total} completed={completed} items={items} />
-      <Button onClick={() => clearAll()} type="reset" text="Clear All" color="#FF6347"/>
+      <Button onClick={clearAll} type="reset" text="Clear All" color="#FF6347"/>
     </div>
   );
 }

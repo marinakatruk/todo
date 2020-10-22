@@ -16,18 +16,20 @@ const List = ({ items, removeItem, completeItem }) => {
                     >
                         {item.text}
                     </span>
+                    
                     <div>
                         <button
                             onClick={() => completeItem(index)}
                             type="button"
                             className={styles.completeButton}
                         >
-                            Complete
+                            &#10004;
                         </button>
                         <button
                             onClick={() => removeItem(index)}
                             type="button"
                             className={styles.deleteButton}
+                            value={item.text}
                         >
                             &times;
                         </button>
